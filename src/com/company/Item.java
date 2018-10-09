@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.Random;
+
 public class Item {
 
     private int itemID;
@@ -7,11 +9,23 @@ public class Item {
     private String category;
     private boolean isFound;
 
+    public Item() {
+    }
+
+    public Item(int itemID, String name, String category, boolean isFound) {
+        this.itemID = itemID;
+        this.name = name;
+        this.category = category;
+        this.isFound = isFound;
+    }
+
     public boolean isFound() {
         return isFound;
     }
 
     public void setFound(boolean found) {
+        Random rand = new Random();
+        found =rand.nextBoolean();
         isFound = found;
     }
 

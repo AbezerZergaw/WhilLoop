@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
@@ -7,52 +8,50 @@ public class Main {
 
     public static void main(String[] args) {
 
+
+    }
+
+    private static ArrayList<Item> getUserInput() {
         Scanner input = new Scanner(System.in);
 
+        String name, catagory, quit;
+        int itemID;
+        boolean isFound;
+
+        ArrayList<Item> lostFound = new ArrayList<>();
+        System.out.println("Lost and found items");
 
 
-       String option;
         do {
-            System.out.println("Enter and exam score");
-            String score = input.nextLine();
-            int examScore = Integer.parseInt(score);
-          //  System.out.println("Enter and exam score");
+            // Create new item
+            Item item = new Item();
+            System.out.println("Enter item ID");
+            itemID = input.nextInt();
 
-            // int score = input.nextInt();
-            //input.nextLine();
+            System.out.println("Enter item Name");
+            name = input.nextLine();
 
-            if (examScore >= 97 && examScore <= 100) {
-                System.out.println("Excellent Your grade is A+");
-            } else if (examScore >= 94 && examScore <= 96) {
-                System.out.println("Good job. Your grade is A ");
-            } else if (examScore >= 90 && examScore <= 95) {
-                System.out.println("Well done. Your grade is A- ");
-            } else if (examScore >= 86 && examScore <= 89) {
-                System.out.println("Great job. Your grade is B+");
-            } else if (examScore >= 80 && examScore <= 85) {
-                System.out.println("Great job. Your grade is B- ");
-            } else if (examScore >= 75 && examScore <= 79) {
-                System.out.println("Great job. Your grade is B ");
-            } else if (examScore >= 70 && examScore <= 74) {
-                System.out.println("Well done. Your grade is C+");
-            } else if (examScore >= 65 && examScore <= 69) {
-                System.out.println("Well done Your grade is C");
-            } else if (examScore >= 60 && examScore <= 64) {
-                System.out.println("Well done. Your grade is C- ");
-            } else if (examScore >= 57 && examScore <= 59) {
-                System.out.println("You passed. Your grade is D+ ");
-            } else if (examScore >= 50 && examScore <= 56) {
-                System.out.println("Well done. Your grade is D ");
+            System.out.println("Enter item Category");
+            catagory = input.nextLine();
 
-            } else {
-
-                System.out.println("You failed Your grade is F ");
-            }
-            System.out.println("Do you want to enter another score (Y/N)");
-
-           option = input.nextLine();
+            System.out.println("Item found? true/false");
+          //  item.setFound();
+            isFound = input.nextBoolean();
 
 
-        } while (option.equalsIgnoreCase("Y"));
+
+            item = new Item(itemID, name, catagory, isFound);
+
+            lostFound.add(item);
+
+            System.out.println("Do you want to add more item? Yes/No");
+
+            quit = input.nextLine();
+            System.out.println();
+
+
+        } while (quit.equalsIgnoreCase("Yes"));
+        return lostFound;
+
     }
 }
